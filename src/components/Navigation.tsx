@@ -35,15 +35,15 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-background/95 backdrop-blur-sm border-b border-border shadow-sm' 
+        ? 'bg-background/95 backdrop-blur-sm border-b border-border' 
         : 'bg-transparent'
     }`}>
-      <div className="max-w-6xl mx-auto px-6 py-4">
+      <div className="max-w-6xl mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => scrollToSection('#')}
-            className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
+            className="text-xl font-light text-foreground hover:text-muted-foreground transition-colors"
           >
             Portfolio
           </button>
@@ -54,10 +54,9 @@ const Navigation = () => {
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="text-foreground/80 hover:text-foreground transition-colors relative group"
+                className="nav-link text-sm font-medium"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </div>
@@ -66,22 +65,22 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden"
+            className="md:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border">
-            <div className="flex flex-col space-y-4 pt-4">
+          <div className="md:hidden mt-6 pb-6 border-t border-border">
+            <div className="flex flex-col space-y-4 pt-6">
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-left text-foreground/80 hover:text-foreground transition-colors py-2"
+                  className="text-left nav-link text-base"
                 >
                   {item.label}
                 </button>

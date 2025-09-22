@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
-import heroBackground from '@/assets/hero-bg.jpg';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,45 +14,39 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackground})` }}
-      />
-      
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/30" />
-      
+    <section className="min-h-screen flex items-center justify-center bg-background relative">
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <div className="section-container text-center">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-foreground mb-8 tracking-tight leading-none">
             Your Name
           </h1>
-          <div className="h-1 w-24 bg-white mx-auto mb-8 animate-scale-in" style={{ animationDelay: '0.5s' }} />
-          <h2 className="text-2xl md:text-3xl text-white/90 mb-8 font-light tracking-wide">
+          
+          <div className="w-16 h-px bg-foreground mx-auto mb-8 opacity-50" />
+          
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-12 font-light max-w-2xl mx-auto leading-relaxed">
             Full Stack Developer & Designer
           </h2>
-          <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Crafting digital experiences with clean code and beautiful design.
-            Passionate about creating solutions that make a difference.
+          
+          <p className="text-base md:text-lg text-muted-foreground mb-16 max-w-xl mx-auto minimal-text">
+            Crafting digital experiences with clean code and thoughtful design
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-white/10 border-white/30 text-white hover:bg-white hover:text-black transition-all duration-300 backdrop-blur-sm"
+              className="min-w-32 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300"
               onClick={scrollToAbout}
             >
-              View My Work
+              View Work
             </Button>
             <Button 
-              variant="outline" 
+              variant="ghost" 
               size="lg"
-              className="bg-transparent border-white/30 text-white hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+              className="min-w-32 text-muted-foreground hover:text-foreground transition-colors"
             >
-              Get In Touch
+              Contact
             </Button>
           </div>
         </div>
@@ -62,10 +55,10 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <button 
         onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 hover:text-white transition-colors animate-bounce"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground hover:text-foreground transition-colors"
         aria-label="Scroll to about section"
       >
-        <ChevronDown size={32} />
+        <ChevronDown size={24} className="animate-bounce" />
       </button>
     </section>
   );

@@ -1,6 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 
 const Experience = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -48,46 +46,44 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" ref={sectionRef} className="py-20 px-6 bg-secondary/30">
-      <div className="max-w-6xl mx-auto">
-        <div className={`transition-all duration-800 ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 text-gradient">
+    <section id="experience" ref={sectionRef} className="bg-muted/30">
+      <div className="section-container">
+        <div className={`fade-in-up ${isVisible ? 'visible' : ''}`}>
+          <h2 className="section-title text-center text-foreground font-light">
             Experience
           </h2>
         </div>
         
-        <div className="space-y-8">
+        <div className="max-w-4xl mx-auto space-y-12">
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className={`transition-all duration-800 ${isVisible ? 'fade-in visible' : 'fade-in'}`}
-              style={{ animationDelay: `${index * 200}ms` }}
+              className={`fade-in-up ${isVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <Card className="portfolio-card">
-                <CardHeader>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                    <div>
-                      <CardTitle className="text-2xl font-semibold">{exp.title}</CardTitle>
-                      <p className="text-lg text-muted-foreground font-medium">{exp.company}</p>
-                    </div>
-                    <Badge variant="outline" className="self-start md:self-center px-4 py-2 text-sm">
-                      {exp.period}
-                    </Badge>
+              <div className="minimal-card p-8">
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+                  <div className="flex-1">
+                    <h3 className="text-xl md:text-2xl font-medium text-foreground mb-2">{exp.title}</h3>
+                    <p className="text-lg text-muted-foreground font-medium">{exp.company}</p>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {exp.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="px-3 py-1">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                  <span className="inline-block px-4 py-2 bg-accent rounded text-sm font-medium text-accent-foreground">
+                    {exp.period}
+                  </span>
+                </div>
+                
+                <p className="minimal-text mb-6 text-base leading-relaxed">
+                  {exp.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  {exp.technologies.map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-secondary text-secondary-foreground rounded text-sm">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>

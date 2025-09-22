@@ -16,9 +16,9 @@ const Index = () => {
       <Contact />
       
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-border">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-muted-foreground">
+      <footer className="border-t border-border">
+        <div className="section-container py-8">
+          <p className="text-center minimal-text">
             © 2024 Your Name. All rights reserved.
           </p>
         </div>
